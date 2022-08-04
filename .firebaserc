@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ingreso-egreso-app-aa511": {
+      "hosting": {
+        "ingresoEgresoApp": [
+          "ingreso-egreso-app-aa511"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ingreso-egreso-app-aa511"
+  }
+}
