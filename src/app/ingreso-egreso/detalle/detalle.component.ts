@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { IngresoEgreso } from 'src/app/modelos/ingreso-egreso.model';
 import { IngresoEgresoService } from 'src/app/services/ingreso-egreso.service';
 import Swal from 'sweetalert2';
-import { AppState } from '../../../app/app.reducer';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-detalle',
@@ -17,7 +17,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
   ingresoEgresos: IngresoEgreso[] = [];
   ingresosSubs: Subscription = Subscription.EMPTY;
 
-  constructor(private readonly _store: Store<AppState>,
+  constructor(private readonly _store: Store<AppStateWithIngreso>,
               private readonly _ingresoEgresoService: IngresoEgresoService) { }
 
   ngOnInit(): void {
@@ -27,11 +27,10 @@ export class DetalleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.ingresosSubs.unsubscribe();
+      this.ingresosSubs?.unsubscribe();
   }
 
   borrar(uid?: string) {
-    debugger
     this._ingresoEgresoService
       .borrarIngresoEgreso(`${uid}`)
       .then( () => Swal.fire('Borrado', 'Item borrado', 'success'))

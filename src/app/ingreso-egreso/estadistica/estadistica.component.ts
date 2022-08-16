@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IngresoEgreso } from 'src/app/modelos/ingreso-egreso.model';
 
 import { ChartData } from 'chart.js';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -27,7 +27,7 @@ export class EstadisticaComponent implements OnInit {
     ]
   };
 
-  constructor(private _store: Store<AppState>) { }
+  constructor(private _store: Store<AppStateWithIngreso>) { }
 
   ngOnInit(): void {
     this._store.select('ingresoEgreso')
